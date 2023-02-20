@@ -19,6 +19,14 @@ class ApplicationController < Sinatra::Base
   end
 
   #item routes
+
+  # This route ⬇ is here to meet requirements but is not utilized in my frontend.
+
+  get '/items' do 
+    items = Item.all
+    items.to_json
+  end
+  #______________________________
   
   get '/stores/:id' do
     store = Store.find(params[:id])
