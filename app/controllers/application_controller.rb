@@ -6,7 +6,7 @@ class ApplicationController < Sinatra::Base
 
   get '/stores' do 
     stores = Store.all
-    stores.to_json
+    stores.to_json(include: :items)
   end
 
   post '/stores' do
@@ -52,7 +52,7 @@ class ApplicationController < Sinatra::Base
   patch '/items/:id' do
     patch_item = Item.find(params[:id])
     patch_item.update(
-      price: params[:price]
+    price: params[:price]
     )
     patch_item.to_json
   end
